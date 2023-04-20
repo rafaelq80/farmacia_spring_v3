@@ -2,7 +2,6 @@ package com.generation.farmacia.model;
 
 import java.math.BigDecimal;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
@@ -15,7 +14,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Table(name = "tb_produtos")
 public class Produto {
@@ -34,12 +32,6 @@ public class Produto {
 
 	private String laboratorio;
 	
-	/**
-	 * A anotação @JsonFormat(shape = JsonFormat.Shape.STRING) é utilizada 
-	 * para formatar o valor do preço do produto como uma String. Desta forma,
-	 * conseguiremos visualizar a parte decimal do preço mesmo sendo 00.
-	 */
-	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	@NotNull(message="Preço é obrigatório!")
 	@Positive(message = "Digite um valor maior do que zero")
 	private BigDecimal preco;
